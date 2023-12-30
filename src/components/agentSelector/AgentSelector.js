@@ -12,11 +12,10 @@ import { fetchAgentList } from "../../store/thunks";
 import { setSelectedAgent } from "../../store/agentReducer";
 
 const DUMMY = {
-  agentCode: "Agent Code",
+  agentName: "Name",
   agencyName: "Agency Name",
   currentPoint: "Points",
-  totalPoint: "Lifetime Points",
-  rank: "Rank",
+  totalPoint: "Lifetime Points"
 };
 
 function RenderAgent(props) {
@@ -34,11 +33,10 @@ function RenderAgent(props) {
 
   return (
     <div className="agent-row-wrapper">
-      <div className="agent-code">{agent.agentCode}</div>
+      <div className="agent-code">{agent.agentName}</div>
       <div className="agency-name">{agent.agencyName}</div>
       <div className="agent-points">{agent.currentPoint}</div>
       <div className="agent-points">{agent.totalPoint}</div>
-      <div className="agent-rank">{agent.rank}</div>
       {selecteable ? (
         <Button onClick={handleAgentSelect} variant={isSelected ? "outlined" : "text"}>
           {isSelected ? "Selected" : "Select"}
@@ -64,7 +62,7 @@ function AgentSelector() {
   return (
     <Accordion elevation={3}>
       <AccordionSummary expandIcon={<ExpandCircleDownRounded />}>
-        Selected Agent : {selectedAgent.agentCode} | {selectedAgent.agencyName}
+        Selected Agent : {selectedAgent.agentName} | {selectedAgent.agencyName}
       </AccordionSummary>
       <AccordionDetails>
         <RenderAgent agent={DUMMY} />

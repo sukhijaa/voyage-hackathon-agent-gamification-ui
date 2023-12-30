@@ -21,7 +21,7 @@ const getDateStr = (dateObj) => {
 function LandingPage() {
   const [price, setPrice] = useState(1000)
   const [city, setCity] = useState("Delhi")
-  const [country, setCountry] = useState("Country")
+  const [country, setCountry] = useState("India")
   const [countryCode, setCountryCode] = useState("IN")
   const [error, setError] = useState("")
   const [date, setDate] = useState(getDateStr(new Date()))
@@ -54,7 +54,7 @@ function LandingPage() {
     setError("");
     dispatch(addBookingThunk({price, city, country, countryCode, date})).then(res => {
       if (res) {
-        navigat("/faq")
+        navigat("/profile")
       } else {
         setError("Failed to create booking. Please try again")
       }

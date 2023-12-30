@@ -1,0 +1,19 @@
+.agent-profile-wrapper {
+    padding: 5px;
+}
+.agent-profile-wrapper h3 {
+    text-align: center;
+}
+.profile-single-item-wrapper {
+    width: 100%;
+    display: flex;
+    font-size: 18px;
+}
+.profile-single-item-title {
+    min-width: 100px;
+    width: 40%;
+    font-weight: 300;
+}
+.profile-single-item-value {
+    font-weight: bold;
+}

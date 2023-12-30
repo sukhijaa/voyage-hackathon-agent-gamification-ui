@@ -1,0 +1,32 @@
+.agent-tab-details-wrapper {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.award-tab-item-wrapper {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    border-width: 0 0 1px 0;
+}
+.award-tab-item-wrapper:first-child {
+    font-weight: bold;
+}
+.award-tab-booking-code {
+    width: 20%;
+}
+.award-tab-booking-time {
+    width: 15%;
+}
+.award-tab-booking-amount {
+    width: 20%;
+}
+.award-tab-points {
+    width: 15%;
+}
+.award-tab-award-name {
+    width: 30%;
+    text-align: justify;
+}

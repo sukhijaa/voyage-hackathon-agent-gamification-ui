@@ -1,4 +1,4 @@
-import { setAgentList, setSelectedAgent } from "./agentReducer"
+import { resetAllData, setAgentList, setAwardHistory, setSelectedAgent } from "./agentReducer"
 
 const getBaseURL = () => {
     if (process.env.NODE_ENV === "development") {
@@ -62,7 +62,7 @@ export const addBookingThunk = (data) => async (dispatch, getState) => {
         })
 
         const responseJson = await responseObj.json();
-        dispatch(fetchAgentList())
+        await dispatch(resetAllData())
         console.log(responseJson);
         return true;
       } catch(e) {
@@ -70,4 +70,37 @@ export const addBookingThunk = (data) => async (dispatch, getState) => {
         console.error(e);
         return false
       }
+}
+
+
+
+export const fetchAwardHistoryThunk = () => async (dispatch, getState) => {
+    const store = getState();
+    const selectedAgent = store.agentReducer.selectedAgent;
+    dispatch(setAwardHistory([]))
+    try {
+        const responseObj = await fetch(`${getBaseURL()}/GetAwardHistory?AgentCode=${selectedAgent.agentCode}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    
+        const responseJson = await responseObj.json();
+
+        if (!responseJson || !responseJson.awardHistory || !responseJson.awardHistory.length) {
+            return
+        }
+        const awardHistory = responseJson.awardHistory;
+        awardHistory.sort((a, b) => {
+            const timeA = new Date(a.awardOn);
+            const timeB = new Date(b.awardOn);
+
+            return timeB.getTime() - timeA.getTime();
+        })
+        dispatch(setAwardHistory(responseJson.awardHistory))
+    } catch(e) {
+        console.error("Failed to fetch award list. Error " + e)
+    }
+
 }

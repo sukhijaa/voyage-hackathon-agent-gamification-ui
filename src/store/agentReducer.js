@@ -1,6 +1,6 @@
 const initialState = {
     profile: {},
-    rewardHistoru: [],
+    awardHistory: [],
     milestones: [],
     agentList: [],
     selectedAgent: {}
@@ -14,6 +14,12 @@ const agentReducer = (state = initialState, action) => {
         case "agent.set.selected": {
             return {...state, selectedAgent: action.payload}
         }
+        case "agent.set.awardHistory": {
+            return {...state, awardHistory: action.payload}
+        }
+        case "agent.reset": {
+            return {...initialState}
+        }
         default: 
         return state
     }
@@ -26,10 +32,23 @@ export const setAgentList = (data) => {
     }
 }
 
+export const setAwardHistory = (data) => {
+    return {
+        type: "agent.set.awardHistory",
+        payload: data
+    }
+}
+
 export const setSelectedAgent = (data) => {
     return {
         type: "agent.set.selected",
         payload: data
+    }
+}
+
+export const resetAllData = () => {
+    return {
+        type: "agent.reset"
     }
 }
 

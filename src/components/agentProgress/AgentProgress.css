@@ -1,0 +1,33 @@
+.profile-level-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+}
+.profile-level-wrapper p {
+    margin-right: 20px;
+}
+.profile-level-wrapper span {
+    font-weight: bold;
+    font-size: 18px;
+}
+.profile-progress-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.profile-icon-wrapper {
+    width: 25%;
+    text-align: left;
+    position: relative;
+    left: -15px;
+}
+.profile-icon-wrapper p {
+    margin: 0;
+}
+.profile-icon-wrapper:first-child {
+    left: 0;
+}
+.agent-profile-wrapper .MuiLinearProgress-root {
+    height: 20px;
+}
