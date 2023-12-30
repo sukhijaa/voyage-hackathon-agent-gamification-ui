@@ -1,4 +1,4 @@
-import { resetAllData, setAgentList, setAwardHistory, setLeaderBoardRankings, setSelectedAgent } from "./agentReducer"
+import { resetAllData, setAgentList, setAwardHistory, setLeaderBoardRankings, setRedmptionHistory, setSelectedAgent } from "./agentReducer"
 
 const getBaseURL = () => {
     if (process.env.NODE_ENV === "development") {
@@ -123,6 +123,51 @@ export const fetchLeaderboardRankings = () => async (dispatch, getState) => {
             return
         }
         dispatch(setLeaderBoardRankings(responseJson))
+    } catch(e) {
+        console.error("Failed to fetch award list. Error " + e)
+    }
+
+}
+
+export const redeemVoucher = (request) => async (dispatch, getState) => {
+    try {
+        const responseObj = await fetch(`${getBaseURL()}/ReedemAwardPoints`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(request)
+        })
+
+        const responseJson = await responseObj.json();
+        await dispatch(resetAllData());
+        dispatch(fetchAgentList());
+        return true;
+      } catch(e) {
+        console.error("Failed to create booking. Error ");
+        console.error(e);
+        return false
+      }
+}
+
+export const fetchRedemptionHistory = () => async (dispatch, getState) => {
+    const store = getState();
+    const selectedAgent = store.agentReducer.selectedAgent;
+    dispatch(setLeaderBoardRankings([]))
+    try {
+        const responseObj = await fetch(`${getBaseURL()}/GetRedemptionHistory?AgentCode=${selectedAgent.agentCode}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    
+        const responseJson = await responseObj.json();
+
+        if (!responseJson || !responseJson.length) {
+            return
+        }
+        dispatch(setRedmptionHistory(responseJson))
     } catch(e) {
         console.error("Failed to fetch award list. Error " + e)
     }

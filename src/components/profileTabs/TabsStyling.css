@@ -78,3 +78,27 @@
     height: 100%;
     padding: 5px;
 }
+.redeem-item-wrapper {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    margin: 5px;
+    padding: 5px 10px;
+}
+.redeem-item-title {
+    width: 60%;
+    margin-right: 10px;
+}
+.redeem-item-required-points {
+    width: 25%;
+}
+.redemption-item-title {
+    width: 50%;
+    margin-right: 10px;
+}
+.redemption-item-required-points {
+    width: 20%;
+}
+.redemption-item-date {
+    width: 30%;
+}

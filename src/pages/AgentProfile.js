@@ -80,15 +80,15 @@ const AgentProfile = (props) => {
             <Tabs value={currentTab} onChange={handleTabClick}>
               <Tab label={"Leaderboard"} />
               <Tab label={"Award History"} />
-              <Tab label={"Redemption History"} />
+              <Tab label={"Redeem Points"} />
               <Tab label={"Tier Benefits"} />
               <Tab label={"Earn More"} />
             </Tabs>
-            <Leaderboard selfIndex={0} selectedIndex={currentTab} />
-            <AwardHistory selfIndex={1} selectedIndex={currentTab} />
-            <RedemptionHistory selfIndex={2} selectedIndex={currentTab} />
-            <TierBenefits selfIndex={3} selectedIndex={currentTab} />
-            <EarnMore selfIndex={4} selectedIndex={currentTab} />
+            {currentTab === 0 ? <Leaderboard selfIndex={0} selectedIndex={currentTab} /> : null}
+            {currentTab === 1 ? <AwardHistory selfIndex={1} selectedIndex={currentTab} /> : null}
+            {currentTab === 2 ? <RedemptionHistory selfIndex={2} selectedIndex={currentTab} /> : null}
+            {currentTab === 3 ? <TierBenefits selfIndex={3} selectedIndex={currentTab} /> : null}
+            {currentTab === 4 ? <EarnMore selfIndex={4} selectedIndex={currentTab} /> : null}
           </Card>
         </Card>
       )}

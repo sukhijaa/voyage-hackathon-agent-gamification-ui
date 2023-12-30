@@ -1,7 +1,7 @@
 const initialState = {
     profile: {},
     awardHistory: [],
-    milestones: [],
+    redemptionHistory: [],
     agentList: [],
     selectedAgent: {},
     leaderboard: {}
@@ -15,7 +15,7 @@ const agentReducer = (state = initialState, action) => {
         case "agent.set.selected": {
             return {...state, selectedAgent: action.payload}
         }
-        case "agent.set.awardHistory": {
+        case "agent.set.award.history": {
             return {...state, awardHistory: action.payload}
         }
         case "agent.reset": {
@@ -23,6 +23,9 @@ const agentReducer = (state = initialState, action) => {
         }
         case "agent.leaderboard": {
             return {...state, leaderboard: action.payload}
+        }
+        case "agent.set.redemption.history": {
+            return {...state, redemptionHistory: action.payload}
         }
         default: 
         return state
@@ -38,7 +41,7 @@ export const setAgentList = (data) => {
 
 export const setAwardHistory = (data) => {
     return {
-        type: "agent.set.awardHistory",
+        type: "agent.set.award.history",
         payload: data
     }
 }
@@ -59,6 +62,13 @@ export const resetAllData = () => async (dispatch) => {
 export const setLeaderBoardRankings = (data) => {
     return {
         type: "agent.leaderboard",
+        payload: data
+    }
+}
+
+export const setRedmptionHistory = (data) => {
+    return {
+        type: "agent.set.redemption.history",
         payload: data
     }
 }
