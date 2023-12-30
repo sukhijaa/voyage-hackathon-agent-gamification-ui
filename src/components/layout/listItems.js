@@ -20,14 +20,6 @@ export const mainListItems = (
       <ListItemText primary="Home" />
     </ListItemButton>
     </Link>
-    <Link to="/search">
-    <ListItemButton>
-      <ListItemIcon>
-        <SearchTwoTone />
-      </ListItemIcon>
-      <ListItemText primary="Search 2.0" />
-    </ListItemButton>
-    </Link>
     <Link to="/faq">
     <ListItemButton>
       <ListItemIcon>
@@ -44,31 +36,5 @@ export const mainListItems = (
       <ListItemText primary="Team Details" />
     </ListItemButton>
     </Link>
-  </React.Fragment>
-);
-
-export const secondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
   </React.Fragment>
 );

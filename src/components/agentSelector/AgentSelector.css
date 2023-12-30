@@ -1,0 +1,16 @@
+.agent-row-wrapper {
+    display: flex;
+    align-items: center;
+}
+.agent-code {
+    width: 20%;
+}
+.agency-name {
+    width: 20%;
+}
+.agent-points {
+    width: 15%;
+}
+.agent-rank {
+    width: 10%;
+}

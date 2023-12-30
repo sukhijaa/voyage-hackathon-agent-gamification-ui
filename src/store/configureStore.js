@@ -3,6 +3,7 @@ import {thunk} from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage/session'
+import promise from 'redux-promise-middleware'
  
 import rootReducer from './reducers.js'
  
@@ -15,7 +16,7 @@ const reducers = rootReducer();
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export default function configureStore(preloadedState) {
-  const middlewares = [thunk]
+  const middlewares = [thunk, promise]
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
   let composedEnhancers
