@@ -4,10 +4,25 @@ import { EmojiEvents } from "@mui/icons-material";
 import { LinearProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 
+const getClassname = (value) => {
+    if (value < 25) {
+        return "progress-bar-custom progress-silver"
+    } else if (value < 50) {
+        return "progress-bar-custom progress-gold"
+    } else if (value < 75) {
+        return "progress-bar-custom progress-platinum"
+    } else {
+        return "progress-bar-custom progress-diamond"
+    }
+}
+
 const AgentProgress = () => {
   const selectedAgent = useSelector(
     (store) => store.agentReducer.selectedAgent
   );
+
+  const progressValue = Math.ceil(selectedAgent.totalPoint / 20)
+
   return (
     <>
       <div className="profile-level-wrapper">
@@ -18,25 +33,26 @@ const AgentProgress = () => {
       </div>
       <div className="profile-progress-top">
         <div className="profile-icon-wrapper">
-          <p>Executive</p>
+          <p>Silver</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>Leadership</p>
+          <p>Gold</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>Chairman</p>
+          <p>Platinum</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>President</p>
+          <p>Diamond</p>
           <EmojiEvents className="profile-progress" />
         </div>
       </div>
       <LinearProgress
         variant="determinate"
-        value={Math.ceil(selectedAgent.totalPoint / 20)}
+        className={getClassname(progressValue)}
+        value={progressValue}
       />
       <div className="profile-progress-top">
         <div className="profile-icon-wrapper">0</div>

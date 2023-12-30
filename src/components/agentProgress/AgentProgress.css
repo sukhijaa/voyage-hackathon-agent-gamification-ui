@@ -27,7 +27,32 @@
 }
 .profile-icon-wrapper:first-child {
     left: 0;
+    color: silver;
+}
+.profile-icon-wrapper:nth-child(2) {
+    color: gold;
+}
+.profile-icon-wrapper:nth-child(3) {
+    color: lightblue;
+}
+.profile-icon-wrapper:nth-child(4) {
+    color: coral;
 }
 .agent-profile-wrapper .MuiLinearProgress-root {
     height: 20px;
+}
+.progress-bar-custom {
+    background-color: whitesmoke !important;
+}
+.progress-silver .MuiLinearProgress-bar {
+    background-color: silver;
+}
+.progress-gold .MuiLinearProgress-bar {
+    background-color: gold;
+}
+.progress-platinum .MuiLinearProgress-bar {
+    background-color: lightblue;
+}
+.progress-diamond .MuiLinearProgress-bar {
+    background-color: coral;
 }

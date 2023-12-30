@@ -26,22 +26,14 @@ const AwardHistory = (props) => {
   const selectedAgentCode = useSelector(
     (store) => store.agentReducer.selectedAgent?.agentCode || ""
   );
-  const [inProgress, setInprogress] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (inProgress) {
-      return;
-    }
     if (!awardHistoryForAgent || awardHistoryForAgent !== selectedAgentCode) {
-      setInprogress(true);
-      dispatch(fetchAwardHistoryThunk()).finally(() => {
-        setInprogress(false);
-      });
+      dispatch(fetchAwardHistoryThunk())
     }
-  }, [inProgress, selectedAgentCode, awardHistoryForAgent]);
+  }, []);
 
-  console.log("Rerendered");
   if (selfIndex !== selectedIndex) {
     return null;
   }

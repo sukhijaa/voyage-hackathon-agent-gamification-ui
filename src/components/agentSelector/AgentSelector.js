@@ -9,7 +9,7 @@ import { ExpandCircleDownRounded } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAgentList } from "../../store/thunks";
-import { setSelectedAgent } from "../../store/agentReducer";
+import { resetAllData, setSelectedAgent } from "../../store/agentReducer";
 
 const DUMMY = {
   agentName: "Name",
@@ -26,7 +26,11 @@ function RenderAgent(props) {
   const dispatch = useDispatch();
 
   const handleAgentSelect = () => {
-    dispatch(setSelectedAgent(agent));
+    dispatch(resetAllData()).then(() => {
+        dispatch(setSelectedAgent(agent))
+        sessionStorage.setItem("persist:searchbot", "")
+        window.location.reload();
+    })
   };
 
   const isSelected = agent.agentCode === selectedAgent.agentCode;

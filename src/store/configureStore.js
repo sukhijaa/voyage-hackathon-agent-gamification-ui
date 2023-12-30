@@ -16,7 +16,7 @@ const reducers = rootReducer();
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export default function configureStore(preloadedState) {
-  const middlewares = [thunk, promise]
+  const middlewares = [promise, thunk]
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
   let composedEnhancers

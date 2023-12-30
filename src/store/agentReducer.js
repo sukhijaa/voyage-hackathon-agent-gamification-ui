@@ -3,7 +3,8 @@ const initialState = {
     awardHistory: [],
     milestones: [],
     agentList: [],
-    selectedAgent: {}
+    selectedAgent: {},
+    leaderboard: {}
 }
 
 const agentReducer = (state = initialState, action) => {
@@ -19,6 +20,9 @@ const agentReducer = (state = initialState, action) => {
         }
         case "agent.reset": {
             return {...initialState}
+        }
+        case "agent.leaderboard": {
+            return {...state, leaderboard: action.payload}
         }
         default: 
         return state
@@ -46,9 +50,16 @@ export const setSelectedAgent = (data) => {
     }
 }
 
-export const resetAllData = () => {
-    return {
+export const resetAllData = () => async (dispatch) => {
+    await dispatch({
         type: "agent.reset"
+    })
+}
+
+export const setLeaderBoardRankings = (data) => {
+    return {
+        type: "agent.leaderboard",
+        payload: data
     }
 }
 

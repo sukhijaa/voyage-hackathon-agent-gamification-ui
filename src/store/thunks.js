@@ -1,4 +1,4 @@
-import { resetAllData, setAgentList, setAwardHistory, setSelectedAgent } from "./agentReducer"
+import { resetAllData, setAgentList, setAwardHistory, setLeaderBoardRankings, setSelectedAgent } from "./agentReducer"
 
 const getBaseURL = () => {
     if (process.env.NODE_ENV === "development") {
@@ -99,6 +99,30 @@ export const fetchAwardHistoryThunk = () => async (dispatch, getState) => {
             return timeB.getTime() - timeA.getTime();
         })
         dispatch(setAwardHistory(responseJson.awardHistory))
+    } catch(e) {
+        console.error("Failed to fetch award list. Error " + e)
+    }
+
+}
+
+export const fetchLeaderboardRankings = () => async (dispatch, getState) => {
+    const store = getState();
+    const selectedAgent = store.agentReducer.selectedAgent;
+    dispatch(setLeaderBoardRankings([]))
+    try {
+        const responseObj = await fetch(`${getBaseURL()}/GetLeaderboardRankings?AgentCode=${selectedAgent.agentCode}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    
+        const responseJson = await responseObj.json();
+
+        if (!responseJson || !responseJson.agentCode) {
+            return
+        }
+        dispatch(setLeaderBoardRankings(responseJson))
     } catch(e) {
         console.error("Failed to fetch award list. Error " + e)
     }

@@ -30,3 +30,51 @@
     width: 30%;
     text-align: justify;
 }
+
+.leaderboard-tab-item-wrapper {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+.leaderboard-tab-item-title {
+    font-weight: 300;
+    font-size: 16px;
+    width: 35%;
+}
+.leaderboard-tab-item-value {
+    font-weight: bold;
+    font-size: 20px;
+}
+.tier-benefits-img {
+    width: 100%;
+}
+.earn-more-row-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    height: 75px;
+}
+.earn-more-row-0 {
+    font-weight: bold;
+}
+.earn-more-row-title {
+    font-weight: bold;
+    width: 25%;
+    border: 1px solid lightgray;
+    border-width: 0 1px 0 0;
+    height: 100%;
+    padding: 5px;
+}
+.earn-more-row-value {
+    width: 25%;
+    border: 1px solid lightgray;
+    border-width: 0 1px 0 0;
+    height: 100%;
+    padding: 5px;
+}
+.earn-more-row-example {
+    width: 50%;
+    height: 100%;
+    padding: 5px;
+}
