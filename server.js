@@ -1,5 +1,5 @@
-import express from "express";
-import { join } from "path";
+const {join} = require("path");
+const express = require("express")
 const app = express();
 
 const staticPath = join(__dirname, 'build');
