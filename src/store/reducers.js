@@ -3,6 +3,7 @@
  */
 
 import { combineReducers } from 'redux';
+import agentReducer from './agentReducer.js';
 
 const initialState = {
     currentPage: "abc"
@@ -16,7 +17,8 @@ const globalReducer = (state = initialState, action) => {
 
 export default function createReducer() {
   const rootReducer = combineReducers({
-    global: globalReducer
+    global: globalReducer,
+    agentReducer: agentReducer
   });
 
   return rootReducer;
