@@ -2,6 +2,8 @@ import "./FaqPage.css";
 import Layout from "../components/layout/Layout.js";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
+import TierBenefits from "../components/profileTabs/TierBenefits.png";
+import { Link } from "react-router-dom";
 
 const FAQs = [
   {
@@ -11,57 +13,71 @@ const FAQs = [
   {
     question: "How it works?",
     answer:
-      "Based on your first input, we go to ChatGPT to ask for startDate, endDate, destination, destinationAirportCode in 4 individual queries. For the components still not parsed, we ask user for the input. Once all input components are processed, we hit Hotel Search and Flight Search API",
+      "For every booking made by agent, we give him some reward point which he can later reddem of discount vochers etc. To motivate him to book more, we are classifying him as Silver, Gold, Platinum or Diamond tier agent - each tier having it's own exclusive benefits. We also show him his ranking in city, country and globally so as to create a healthy competition between agents",
   },
   {
-    question: "What are some valid input messages?",
+    question: "What does a single Tier means?",
     answer: (
-      <ul>
-        <h4>Here are some of the valid inputs:{" "}</h4>
-        <li>I want to go to sydney in first week of june 2024</li>{" "}
-        <li>I want to attend Wimbledon Final in July 2024</li>{" "}
-        <li>
-          Plan an itinerary for to travel to eiffel tower in September 2024
-        </li>{" "}
-      </ul>
+      <div>
+        <p>Each Tier has it's own unique benefits. Same are described below</p>
+        <img src={TierBenefits} style={{width: "100%"}}/>
+      </div>
     ),
   },
   {
-    question: "What it can't do?",
-    answer:
-      "We're basing our POC on ChatGPT Turbo 3.5. This model doesn't have internet access so queries like 'next year', 'exact date of some event' etc are not deduced by it",
+    question: "How can an agent earn points",
+    answer: (
+      <ul>He earns points on basis of amount of booking he's making
+        <li>For every booking : 1% Reward Points</li>
+        <li>For every 10th booking : 1% Extra Reward Points</li>
+        <li>For every new city booking : 2% Extra Reward Points</li>
+        <li>For every new country booking : 2% Extra Reward Points</li>
+        <li>For more details, go to Earn More Section <Link to="/profile">here</Link></li>
+      </ul>
+    )
   },
   {
-    question: "How we create itinerary?",
-    answer: "We filter hotels and flights based on input budget such that Cheapest Hotel + Costliest Flight and Costliest Hotel + Cheapest Flight fit user's budget"
+    question: "How much is a point worth",
+    answer:
+      "For sake of POC, we have considered 100 Reward Points = $1",
+  },
+  {
+    question: "How can he redeem his points",
+    answer:
+      <div>For details go to Redeem Points Section <Link to="/profile">here</Link></div>,
   },
   {
     question: "Which technology did we use?",
     answer: (
       <ul>
         <h4>Below are the technologies used:</h4> <li>Frontend : ReactJS</li>{" "}
-        <li>Backend : NodeJS</li> <li>Cloud: AWS</li>{" "}
+        <li>Backend : C3 (.NET8)</li> <li>Cloud: AWS</li>{" "}
       </ul>
     ),
   },
   {
     question: "What is our Git Repo",
-    answer: "https://github.com/sukhijaa/voyage-hackathon-ai-searchbot"
+    answer: (
+      <ul>
+        <h3>UI</h3>https://github.com/sukhijaa/voyage-hackathon-agent-gamification-ui 
+        <h3>BE</h3>https://github.com/sukhijaa/voyage-hackathon-agent-gamification-backend 
+      </ul>
+    )
   }
 ];
 
 const FUTURE_SCORE = [
   {
-    question: "Different forms of input",
-    answer: "We had planned to take Voice and Image input as well in original idea but decided to go ahead with Text Search only since firstly, Voice Input can be converted to text input using Google Speech to Text or OpenAI's Speech to Text Tools. Secondly, we dropped image input since OpenAI restricts query limit to 1 per minute for media search and hence we dropped that too."
+    question: "Booking Streaks",
+    answer: "We had planned to create leaderboard based on his booking streaks and award him badges. For instance, if a user creates 1 booking every for 5 straight weeks, his streak would be of 5 Weeks. This way, we wanted to show a leaderboard of Agents with longest Booking Streaks based on Weeks, Fortnights and Months"
   },
   {
-    question: "Real Time Search Data",
-    answer: "ChatGPT doesn't support real-time search data like date of some sports event, date of some carnival etc. We had planned to use Google's Bard.ai but it's available for API integration only to few users whose waitlist got approved."
+    question: "Referral Points",
+    answer: "Referral is a big business driver for TBO. We intended to award 10000 Reward Points or $100 to Agent who brings on a new agent to the platform"
   },
   {
-    question: "Dynamic Itinerary",
-    answer: "We wanted to take theme of travel (vacation, business, sports, medical etc.) as input and then ask Bard for places matching this theme (thier lat-long and date) and show hotels and flights accordingly. But we couldn't do it since Hotel API doesn't expose the theme of Hotel currently. We know TBO has this data, all we need is to expose it in API for that to work."
+    question: "Badge Allocation",
+    answer: "We had planned to giving badges to Agent for various milestones he achieve like New City Booking, 5 Unique Countries Booking etc. These badges can be shared on Social Media Platforms to drive awareness about TBO"
   }
 ];
 

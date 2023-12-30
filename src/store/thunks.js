@@ -40,7 +40,11 @@ export const fetchAgentList = () => async (dispatch, getState) => {
 
 export const addBookingThunk = (data) => async (dispatch, getState) => {
     const store = getState();
-    const selectedAgent = store.agentReducer.selectedAgent;
+    const selectedAgent = store.agentReducer.selectedAgent || {};
+
+    if (!selectedAgent || !selectedAgent.agentCode) {
+        return false
+    }
 
     const request = {
         "agentCode": selectedAgent.agentCode,

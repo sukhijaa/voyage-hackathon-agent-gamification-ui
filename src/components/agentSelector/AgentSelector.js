@@ -21,7 +21,7 @@ const DUMMY = {
 function RenderAgent(props) {
   const { agent, selecteable } = props;
   const selectedAgent = useSelector(
-    (store) => store.agentReducer.selectedAgent
+    (store) => store.agentReducer.selectedAgent || {}
   );
   const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ function RenderAgent(props) {
 
 function AgentSelector() {
   const dispatch = useDispatch();
-  const agentList = useSelector((store) => store.agentReducer.agentList);
+  const agentList = useSelector((store) => store.agentReducer.agentList || []);
   const selectedAgent = useSelector(
     (store) => store.agentReducer.selectedAgent
   );
