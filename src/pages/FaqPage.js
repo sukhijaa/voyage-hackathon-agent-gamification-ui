@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const FAQs = [
   {
     question: "How to use this POC?",
-    answer: "Please watch this video for details: ",
+    answer: <span>You may watch the video here <a href="https://youtu.be/Jfb0xdqFLSo" target="_blank">Link</a> </span>
   },
   {
     question: "How it works?",
@@ -69,7 +69,7 @@ const FAQs = [
 const FUTURE_SCORE = [
   {
     question: "Booking Streaks",
-    answer: "We had planned to create leaderboard based on his booking streaks and award him badges. For instance, if a user creates 1 booking every for 5 straight weeks, his streak would be of 5 Weeks. This way, we wanted to show a leaderboard of Agents with longest Booking Streaks based on Weeks, Fortnights and Months"
+    answer: "We had planned to create leaderboard based on his booking streaks and award him badges. For instance, if a user creates 1 booking every week for 5 straight weeks, his streak would be of 5 Weeks. This way, we wanted to show a leaderboard of Agents with longest Booking Streaks based on Weeks, Fortnights and Months"
   },
   {
     question: "Referral Points",
