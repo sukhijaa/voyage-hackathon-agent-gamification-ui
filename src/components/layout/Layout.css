@@ -27,4 +27,6 @@
     position: relative;
     top: 25%;
     text-align: center;
+    width: 100%;
+    height: calc(75%)
 }

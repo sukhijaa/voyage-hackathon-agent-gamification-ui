@@ -59,7 +59,7 @@ export default function Layout(props) {
     : null;
   if (pageContentBox && pageContentBox.width > WIDTH) {
     WIDTH = pageContentBox.width;
-    HEIGHT = pageContentBox.HEIGHT;
+    HEIGHT = pageContentBox.height;
   }
 
   return (
@@ -92,7 +92,7 @@ export default function Layout(props) {
               <Confetti width={WIDTH} height={HEIGHT} recycle={true} />
               <div className="confetti-message">{showConfetti}</div>
               <div className="confetti-image">
-                <img src={TierBenefitsImg} style={{ width: "80%" }} />
+                <img src={TierBenefitsImg} style={{ height: "70%" }} />
               </div>
             </div>
           ) : null}
