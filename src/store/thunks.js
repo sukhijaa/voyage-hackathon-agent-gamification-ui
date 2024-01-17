@@ -1,4 +1,4 @@
-import { resetAllData, setAgentList, setAwardHistory, setLeaderBoardRankings, setRedmptionHistory, setSelectedAgent } from "./agentReducer"
+import { resetAllData, setAgentList, setAwardHistory, setLeaderBoardRankings, setRedmptionHistory, setSelectedAgentAction } from "./agentReducer"
 
 const getBaseURL = () => {
     if (process.env.NODE_ENV === "development") {
@@ -68,6 +68,7 @@ export const addBookingThunk = (data) => async (dispatch, getState) => {
         const responseJson = await responseObj.json();
         await dispatch(resetAllData())
         console.log(responseJson);
+        dispatch(showConfetti())
         return true;
       } catch(e) {
         console.error("Failed to create booking. Error ");
@@ -176,4 +177,25 @@ export const fetchRedemptionHistory = () => async (dispatch, getState) => {
         console.error("Failed to fetch award list. Error " + e)
     }
 
+}
+
+export const showConfetti = (message = "Congratulations! You've moved up on the leaderboard") => async (dispatch) => {
+    dispatch({type: "show.confetti", message})
+    setTimeout(() => {
+        dispatch({type: "hide.confetti"})
+    }, 7000)
+}
+
+export const setSelectedAgent = (agent, showMessage) => async (dispatch, getState) => {
+    await dispatch(setSelectedAgentAction(agent))
+    await dispatch(fetchAwardHistoryThunk())
+    if (!showMessage) {
+        return
+    }
+    const state = getState()
+    const awardHistory = state.agentReducer.awardHistory || [];
+    const loginAwardPresent = awardHistory.find(award => (award.bookingConfirmationNo || "").toLowerCase().includes("logging"))
+    if (loginAwardPresent) {
+        dispatch(showConfetti(`Welcome Back! ${loginAwardPresent.awardName}`))
+    }
 }

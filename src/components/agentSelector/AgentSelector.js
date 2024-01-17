@@ -8,8 +8,8 @@ import {
 import { ExpandCircleDownRounded } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAgentList } from "../../store/thunks";
-import { resetAllData, setSelectedAgent } from "../../store/agentReducer";
+import { fetchAgentList, setSelectedAgent } from "../../store/thunks";
+import { resetAllData } from "../../store/agentReducer";
 
 const DUMMY = {
   agentName: "Name",

@@ -11,6 +11,9 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { mainListItems } from "./listItems";
 import Header from "./Header";
 import "./Layout.css";
+import { useSelector } from "react-redux";
+import Confetti from "react-confetti";
+import TierBenefitsImg from "../profileTabs/TierBenefits.png"
 
 const drawerWidth = 240;
 
@@ -42,11 +45,22 @@ const Drawer = styled(MuiDrawer, {
 
 const defaultTheme = createTheme();
 
+var WIDTH = 500;
+var HEIGHT = 500;
 export default function Layout(props) {
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const ref = React.useRef();
+  const showConfetti = useSelector((state) => state.global.showConfetti);
+  const pageContentBox = ref.current
+    ? ref.current.getBoundingClientRect()
+    : null;
+  if (pageContentBox && pageContentBox.width > WIDTH) {
+    WIDTH = pageContentBox.width;
+    HEIGHT = pageContentBox.HEIGHT;
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -72,7 +86,18 @@ export default function Layout(props) {
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>
-        <div className="page-conents">{props.children}</div>
+        <div className="page-conents" ref={ref}>
+          {showConfetti ? (
+            <div className="confetti-wrapper" style={{height: HEIGHT, width: WIDTH}}>
+              <Confetti width={WIDTH} height={HEIGHT} recycle={true} />
+              <div className="confetti-message">{showConfetti}</div>
+              <div className="confetti-image">
+                <img src={TierBenefitsImg} style={{ width: "80%" }} />
+              </div>
+            </div>
+          ) : null}
+          {props.children}
+        </div>
       </Box>
     </ThemeProvider>
   );

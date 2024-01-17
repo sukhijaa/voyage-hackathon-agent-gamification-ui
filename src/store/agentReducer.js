@@ -46,7 +46,7 @@ export const setAwardHistory = (data) => {
     }
 }
 
-export const setSelectedAgent = (data) => {
+export const setSelectedAgentAction = (data) => {
     return {
         type: "agent.set.selected",
         payload: data

@@ -4,7 +4,7 @@ import AgentSelector from '../components/agentSelector/AgentSelector';
 import { Accordion, AccordionSummary, Button, Card, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBookingThunk } from '../store/thunks';
+import { addBookingThunk, showConfetti } from '../store/thunks';
 import { useNavigate } from "react-router-dom";
 
 const getDateStr = (dateObj) => {
@@ -52,6 +52,7 @@ function LandingPage() {
 
   const handleBooking = () => {
     setError("");
+    dispatch(showConfetti())
     dispatch(addBookingThunk({price, city, country, countryCode, date})).then(res => {
       if (res) {
         navigat("/profile")

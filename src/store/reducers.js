@@ -6,10 +6,17 @@ import { combineReducers } from 'redux';
 import agentReducer from './agentReducer.js';
 
 const initialState = {
-    currentPage: "abc"
+    currentPage: "abc",
+    showConfetti: false
 }
 const globalReducer = (state = initialState, action) => {
     switch (action.type) {
+      case "show.confetti": {
+        return {...state, showConfetti: action.message}
+      }
+      case "hide.confetti": {
+        return {...state, showConfetti: false}
+      }
         default:
             return state
     }

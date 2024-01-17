@@ -1,0 +1,15 @@
+.login-page-wrapper {
+    padding: 10px;
+}
+.login-page-agent-item-wrapper {
+    margin: 20px 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.login-page-agent-item-name {
+    width: 40%;
+}
+.login-page-agent-item-last-login {
+    width: 40%;
+}

@@ -39,11 +39,27 @@
 .leaderboard-tab-item-title {
     font-weight: 300;
     font-size: 16px;
-    width: 35%;
+    min-width: 26%;
+    width: 26%;
 }
 .leaderboard-tab-item-value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 100;
+    padding: 5px 10px;
+    width: 37%;
+    min-width: 37%;
+}
+.leaderboard-tab-item-value-rank {
     font-weight: bold;
     font-size: 20px;
+    font-weight: bold;
+}
+.leaderboard-tab-item-value-remark {
+    font-size: 13px;
+    text-align: center;
 }
 .tier-benefits-img {
     width: 100%;

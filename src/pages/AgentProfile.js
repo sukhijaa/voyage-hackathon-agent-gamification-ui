@@ -7,12 +7,13 @@ import {
   AccordionDetails,
   AccordionSummary,
   Card,
+  Icon,
   LinearProgress,
   Tab,
   Tabs,
 } from "@mui/material";
 import { useSelector } from "react-redux";
-import { EmojiEvents, ExpandLess, ExpandMore } from "@mui/icons-material";
+import { EmojiEvents, ExpandLess, ExpandMore, FiberNewRounded, FiberNewTwoTone, LinkedIn, WhatsApp, WhatshotOutlined } from "@mui/icons-material";
 import AgentProgress from "../components/agentProgress/AgentProgress";
 import AwardHistory from "../components/profileTabs/AwardHistory";
 import RedemptionHistory from "../components/profileTabs/RedemptionHistory";
@@ -75,14 +76,18 @@ const AgentProfile = (props) => {
             title={"Total Points"}
             value={selectedAgent.totalPoint}
           />
+          <PersonalDetailItem
+            title={"Share With Your Network"}
+            value={<div className="personal-details-icons-wrapper"><WhatsApp color="success"/><LinkedIn color="info"/></div>}
+          />
           <AgentProgress />
           <Card elevation={3} style={{ marginTop: "20px" }}>
-            <Tabs value={currentTab} onChange={handleTabClick}>
-              <Tab label={"Leaderboard"} />
+            <Tabs value={currentTab} onChange={handleTabClick} variant="fullWidth">
+              <Tab label={"Leaderboard"} color="secondary"/>
               <Tab label={"Award History"} />
               <Tab label={"Redeem Points"} />
-              <Tab label={"Tier Benefits"} />
-              <Tab label={"Earn More"} />
+              <Tab icon={<FiberNewRounded color="error"/>} label={"Tier Benefits"} />
+              <Tab icon={<FiberNewRounded color="error"/>} label={"Earn More"} />
             </Tabs>
             {currentTab === 0 ? <Leaderboard selfIndex={0} selectedIndex={currentTab} /> : null}
             {currentTab === 1 ? <AwardHistory selfIndex={1} selectedIndex={currentTab} /> : null}

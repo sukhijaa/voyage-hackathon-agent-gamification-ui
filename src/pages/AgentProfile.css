@@ -18,3 +18,19 @@
 .profile-single-item-value {
     font-weight: bold;
 }
+.agent-profile-wrapper .MuiTab-root {
+    display: flex !important;
+    align-items: center;
+    flex-direction: row-reverse !important;
+}
+.agent-profile-wrapper .MuiTab-root svg {
+    margin: 0 6px;
+    animation: bouncing-icon 1s infinite alternate;
+}
+
+@keyframes bouncing-icon {
+    to {
+        transform: translateY(-10px);
+    }
+}
+

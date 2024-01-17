@@ -6,16 +6,24 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuestionAnswerSharp from '@mui/icons-material/QuestionAnswerSharp';
 import PeopleAltSharp from '@mui/icons-material/PeopleAltSharp';
 import {Link} from "react-router-dom"
-import { Person } from '@mui/icons-material';
+import { LoginOutlined, Person } from '@mui/icons-material';
 
 export const mainListItems = (
   <React.Fragment>
     <Link to="/">
     <ListItemButton>
       <ListItemIcon>
+        <LoginOutlined/>
+      </ListItemIcon>
+      <ListItemText primary="Login" />
+    </ListItemButton>
+    </Link>
+    <Link to="/booking">
+    <ListItemButton>
+      <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Home" />
+      <ListItemText primary="Make A Booking" />
     </ListItemButton>
     </Link>
     <Link to="/profile">
