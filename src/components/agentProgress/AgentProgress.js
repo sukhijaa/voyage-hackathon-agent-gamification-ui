@@ -33,19 +33,19 @@ const AgentProgress = () => {
       </div>
       <div className="profile-progress-top">
         <div className="profile-icon-wrapper">
-          <p>Silver</p>
+          <p>TBO Silver +</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>Gold</p>
+          <p>TBO Gold +</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>Platinum</p>
+          <p>TBO Platinum +</p>
           <EmojiEvents className="profile-progress" />
         </div>
         <div className="profile-icon-wrapper">
-          <p>Diamond</p>
+          <p>TBO Diamond +</p>
           <EmojiEvents className="profile-progress" />
         </div>
       </div>
